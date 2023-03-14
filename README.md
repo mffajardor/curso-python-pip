@@ -24,3 +24,9 @@ source env/bin/activate
 pip3 install -r requirements.txt
 python3 main.py
 ```
+
+**Nota:** Es necesario crear la carpeta **"imgs"** dentro de la carpeta del proyecto App, para evitar errores al momento de la ejecución. También se recomenda crear el entorno virtual después de clonar el repositorio de la siguiente forma:
+
+```sh
+python3 -m venv env
+```
