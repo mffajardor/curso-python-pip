@@ -3,20 +3,27 @@
 import utils
 import read_csv
 import charts
+import pandas as pd
 
 
 def run():
-
-  data = read_csv.read_csv('data.csv')
-
-  # Se puede filtrar la data por los continentes
-  data = list(filter(lambda item: item['Continent'] =='South America',data))
-  countries = list(map(lambda x: x['Country'], data))
-
-  percentages = list(map(lambda x: float(x['World Population Percentage']), data))
-
+  # Utilizando pandas para facilitar uso
+  
+  df = pd.read_csv('data.csv')
+  
+  # Similar a: data = list(filter(lambda item: item['Continent'] =='South America',data))
+  df = df[df['Continent'] == 'Africa'] 
+  
+  # Equivale a: countries = list(map(lambda x: x['Country'], data))
+  countries = df['Country'].values
+  
+  # Equivale a: percentages = list(map(lambda x: float(x['World Population Percentage']), data))
+  percentages = df['World Population Percentage'].values
+  
   charts.generate_pie_chart(countries, percentages)
   
+  
+  data = read_csv.read_csv('data.csv')
   country = input("Type a country => ")
   print(country)
   print("=== Info del país ===")
